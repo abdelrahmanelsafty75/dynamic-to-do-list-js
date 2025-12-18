@@ -3,34 +3,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskInput = document.getElementById('task-input');
     const taskList = document.getElementById('task-list');
 
-    addButton.addEventListener('click', addTask);
-
-    addButton.addEventListener('keypress', (event) => {
-        if(event.key === 'Enter'){
-            addTask();
-        }
-    });
-
     function addTask() {
         const taskText = taskInput.value.trim();
         if(!taskText){
             alert('Please enter a task.');
             return;
         }
-       const listItem = document.createElement('li');
-       listItem.textContent = taskText;
-       taskList.appendChild(listItem);
-
-       const removeButton = document.createElement('button');
-       removeButton.className = 'remove-btn';
-       removeButton.textContent = 'Remove';
-
+        const listItem = document.createElement('li');
+        listItem.textContent = taskText;
+        
+        const removeButton = document.createElement('button');
+        removeButton.className = 'remove-btn';
+        removeButton.textContent = 'Remove';
+        
         removeButton.addEventListener('click', () => {
             listItem.remove();
-    });
-         listItem.appendChild(removeButton);
-         taskList.appendChild(listItem);
-         taskInput.value = "";
-
+        });
+        listItem.appendChild(removeButton);
+        taskList.appendChild(listItem);
+        taskInput.value = "";
+        
     }
+
+    addButton.addEventListener('click', addTask);
+
+    taskInput.addEventListener('keypress', (event) => {
+        if(event.key === 'Enter'){
+            addTask();
+        }
+    });
+
 });
