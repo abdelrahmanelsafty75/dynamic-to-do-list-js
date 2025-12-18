@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function addTask() {
         const taskText = taskInput.value.trim();
-        if(taskText === ""){
+        if(!taskText){
             alert('Please enter a task.');
             return;
         }
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
        removeButton.textContent = 'Remove';
 
         removeButton.addEventListener('click', () => {
-            taskList.removeChild(listItem);  
+            listItem.remove();
     });
          listItem.appendChild(removeButton);
          taskList.appendChild(listItem);
